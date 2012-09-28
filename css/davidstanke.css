@@ -1,0 +1,7 @@
+.nav li a b {
+	color:#aaa;
+}
+
+.nav li.active a b, .nav li a:hover b {
+	color:#ffff66;
+}
