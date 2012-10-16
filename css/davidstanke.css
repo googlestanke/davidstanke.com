@@ -12,6 +12,14 @@ a:hover {
 	text-decoration: none;
 }
 
+.navbar {
+	background-color: #141314;
+}
+
+.nav a {
+	font-size:18px;
+}
+
 .nav li a b {
 	color:#aaa;
 }
@@ -47,6 +55,27 @@ h2 {
 #footer {
 	text-align:center;
 	padding-top: 18px;
+	font-size: 18px;
+}
+
+#footer a {
+	color:white;
+	white-space: nowrap;
+}
+
+#footer i {
+	font-size:120%;
+	display: inline-block;
+	margin-right:8px;
+	margin-left:16px;
+}
+
+#footer a:hover {
+	color:#ff6;
+}
+
+#footer a>i {
+	color:#08c;
 }
 
 @media all and (max-width:800px) {
