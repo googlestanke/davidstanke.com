@@ -1,7 +1,59 @@
+body {
+	background-color: #312f33;
+	color:white;
+}
+
+a, a:hover, a:visited {
+   outline: none !important;
+}
+
+a:hover {
+	color:#ff6;
+	text-decoration: none;
+}
+
 .nav li a b {
 	color:#aaa;
 }
 
 .nav li.active a b, .nav li a:hover b {
 	color:#ffff66;
+}
+
+.dave {
+	float:left;
+	background-image:url('../img/dave.jpg');
+	background-size:contain;
+	background-position:top;
+	background-repeat:no-repeat;
+	width:300px;
+	height:403px;
+	margin-right:20px;
+	margin-left:140px;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h2 {
+	font-weight: normal;
+}
+
+.content {
+	font-size:16px;
+}
+
+#footer {
+	text-align:center;
+	padding-top: 18px;
+}
+
+@media all and (max-width:800px) {
+	.dave {width:200px;height:267px;margin-left:10px;}
+	h1 {font-size:36px;}
+}
+
+@media all and (max-width: 600px) {
+	.dave {display:none;}
 }
