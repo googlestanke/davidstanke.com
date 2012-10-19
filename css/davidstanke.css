@@ -1,7 +1,19 @@
+html {
+	/* prevent content jumping when scrollbars appear */
+	overflow: -moz-scrollbars-vertical;
+	overflow-y:scroll;
+}
+
 body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    font-family: open-sans, sans-serif;
 	background-color: #312f33;
 	color:white;
 }
+
+.navbar, h1, h2, h3, h4, h5, #footer {
+        font-family: arvo, sans-serif;
+      }
 
 a, a:hover, a:visited {
    outline: none !important;
@@ -16,7 +28,8 @@ a:hover {
 	background-color: #141314;
 }
 
-.nav a {
+ul.nav a {
+	font-family: open-sans,sans-serif;
 	font-size:18px;
 }
 
@@ -34,8 +47,7 @@ a:hover {
 	background-position:top;
 	background-repeat:no-repeat;
 	width:300px;
-	height:403px;
-	margin:20px;
+	height:400px;
 	display:table-cell;
 }
 
@@ -48,22 +60,24 @@ h2, h3, h4, h5 {
 }
 
 h5 {
-	margin-bottom: 0px;
 	color:#8c8693;
 }
 
 .main {
-	margin:20px;
+	width:960px;
+	display:table;
+	border-spacing:20px;
 }
 
 .content {
+	width:600px;
 	font-size:16px;
-	padding:20px;
+	height:410px;
 }
 
 #footer {
 	text-align:center;
-	padding-top: 18px;
+	padding: 18px;
 	font-size: 18px;
 }
 
@@ -87,27 +101,37 @@ h5 {
 	color:#08c;
 }
 
-#downloads {
+#downloads, #sitemap {
 	display:inline-block;
 	padding:8px;
 	border-radius: 8px;
 	background-color:rgba(255,255,255,.05);
+}
+
+#downloads {
 	font-size:12px;
 }
 
 #resume_text {
-	max-width:60em;
+	max-width:580px;
 	font-size:13px;
 }
 
-@media all and (max-width:800px) {
+@media all and (max-width:959px) {
+	.main {width:800px;}
 	.dave {width:200px;height:267px;}
+	.content {width:640px;}
 	h1 {font-size:36px;}
 	h2 {font-size:22px;}
 }
 
-@media all and (max-width: 600px) {
-	.main {margin:4px;}
-	.content {margin:8px;}
+@media all and (max-width:799px) {
+	.main {width:600px;border-spacing:10px;}
+	.content {width:380px;}
+}
+
+@media all and (max-width: 599px) {
+	.main {width:auto;border-spacing:6px;}
+	.content {width:auto;}
 	.dave {display:none;}
 }
