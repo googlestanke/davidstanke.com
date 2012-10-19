@@ -11,15 +11,17 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <script src="http://use.edgefonts.net/arvo.js"></script>
+  <script src="http://use.edgefonts.net/open-sans.js"></script> 
 
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        font-family: arvo, sans-serif;
+        font-family: open-sans, sans-serif;
       }
 
-
-
+      .navbar, h1, h2, h3, h4, h5, #footer {
+        font-family: arvo, sans-serif;
+      }
     </style>
 
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -68,18 +70,69 @@
         </div>
       </div>
 
-      <div class="dave"></div>
+      <div class="main" style="display:table;">
 
-      <div class="content container" id="about">
+      <div class="dave" style="vertical-align:top;"></div>
+
+      <div class="content container" id="about" style="display:table-cell;vertical-align:top;">
 
         <h1>Hi.</h1>
         <h2>I'm a <i>Product-oriented</i> CTO.</h2>
-        <p>I train machines to help people.</p>
+        <p style="max-width:50em;">
+          For over fifteen years, I've lead teams of people who build high-performance Web applications. I take a holistic, user-focused approach to engineering: I aim to optimize feature depth, user experience, speed, and uptime to deliver compelling experiences that serve users' needs.
+        </p>
+        <p>
+          Welcome to my site. What brings you by?
+        </p>
 
       </div> <!-- /container -->
       <div class="content container" id="resume" style="display:none;">
+        <h2>Resume</h2>
+        <div id="downloads">
+          Download: 
+          <a href="javascript:alert('not done yet.')"><img src="img/doc.png"></a> 
+          <a href="javascript:alert('nuh-uh.')"><img src="img/pdf.png"></a> 
+          <a href="javascript:alert('nope.')"><img src="img/txt.png"></a>                              
+        </div>
+        <div id="resume_text">
+            <br>
+            <h5>EXPERIENCE:</h5>
+            <b>Chief Technology Officer</b><br> 
+            OvationTix / TheaterMania <i>2002 - Present</i><br>
+            Director of all aspects of engineering, product, design, and operations for  successful SaaS and content portal Web applications. Manager of a sixteen-person team of programmers, designers, QA specialists, and support staff.<br>
+            <br>
+            <i>OvationTix.com is a box office event-ticketing platform processing over $100 million per year through high-volume ecommerce, real-time reporting, and barcoded access control. TheaterMania.com is the Web’s leading portal for theater news and information, with monthly traffic of over 1 million visitors, and a daily email subscriber base of over half a million.</i><br>
+            <br>
+            <b>Programming/Design Consultant</b><br> 
+            <i>2001 - 2002</i><br>
+            Web- and print- based consulting work for companies including Vivendi Universal, iN DEMAND pay-per-view and Atlantic Records.<br>
+            <br>
+            <b>Director of Development</b><br>
+            Goldcap Design <i>1998 - 2001</i><br>
+            Led the company’s expansion from a 2-person print design partnership to a developer of enterprise-level Web solutions with a staff of 15. Individually and as director of a team, produced information architecture, graphics, code, and database for large-scale B2B/B2C applications.<br>
+            <br>
+            <b>Art Director</b><br>
+            Silicon Alley Reporter Magazine <i>1998</i><br>
+            Created all design and layout and supervised production for 100+ page monthly magazine and affiliated website.
+            <br>
+            <h5>EDUCATION:</h5>
+            <b>Columbia University</b><br>
+            MS, Technology Management <i>2012 (expected)</i><br>
+            <br> 
+            <b>Brown University</b><br> 
+            BA, Social Psychology <i>1998</i>
+            <br>
+            <h5>SKILLS:</h5>
+            Technology Leadership, Project Management, Architecture, Design<br>
+            MySQL, MS-SQL, Java, PHP, Python, AJAX, HTML5, CSS<br>
+            Infrastructure, Cloud, Linux, Mac, Windows<br>
+            
+            <h5>AFFILIATIONS:</h5>
+            New York CTO Club
+        </div>
 
-        <p>Coming soon.</p>
+
+        
 
       </div> <!-- /container -->
       <div class="content container" id="links" style="display:none;">
@@ -92,6 +145,7 @@
         <h1><a href="http://www.jessgeorge.net" target="_blank">My Wife</a></h1>
 
       </div> <!-- /container -->
+    </div> <!-- /main -->  
     <div id="footer">
       <a href="tel:+19179020055"><i class="icon-phone"></i> 917-902-0055</a> <a href="mailto:davidstanke@gmail.com"><i class="icon-mail"></i> davidstanke@gmail.com</a>
     </div>
@@ -113,8 +167,8 @@
         $(window).hashchange( function(){
           $("ul.nav a").parent().removeClass('active');
           $("ul.nav a[href='" + location.hash + "']").parent().addClass('active');
-          $("div.content").hide();
-          $("div.content" + location.hash).show();
+          $("div.content").css({ display: "none" });
+          $("div.content" + location.hash).css({ display: "table-cell" });
         })
 
         $(window).hashchange();
