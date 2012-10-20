@@ -5,7 +5,6 @@ html {
 }
 
 body {
-	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
     font-family: open-sans, sans-serif;
 	background-color: #312f33;
 	color:white;
@@ -67,6 +66,7 @@ h5 {
 	width:960px;
 	display:table;
 	border-spacing:20px;
+	margin:auto;
 }
 
 .content {
