@@ -67,6 +67,7 @@ h5 {
 	display:table;
 	border-spacing:20px;
 	margin:auto;
+	padding-top:60px;
 }
 
 .content {
