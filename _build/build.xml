@@ -14,6 +14,7 @@
   <target name="build-davessite"
       depends="
       create_working_dir
+      ,copy_html
       ,copy_passthrough
       ,minify-js
       ,copy_js_already_minified
@@ -22,7 +23,8 @@
       ,copy_favicon
       ,gzip_all
       ,publish_to_s3
-      ,clean_working_dir
+      ,publish_html
+      ,publish_resume
       "/>
 
 
@@ -108,6 +110,12 @@
     </copy>
   </target>
 
+    <target name="copy_html"> <!-- copy html with no processing -->
+    <copy todir="${basedir}/__build-work" overwrite="true">
+        <fileset dir="${basedir}/_html" includes="*.html"/>
+    </copy>
+  </target>
+
   <target name="copy_favicon"> 
     <copy todir="${basedir}/__build-work" overwrite="true">
         <fileset dir="${basedir}/_html" includes="favicon.ico"/>
@@ -139,18 +147,45 @@
    <gzip src="${sourcefile}" destfile="${targetfile}"/>
   </target> 
 
-
   <target name="publish_to_s3">
       <!-- see: http://www.elstensoftware.com/blog/2012/06/18/ant-scripts-for-s3-headers/ -->
-    <upload>
-      <args>
-        <arg value="--add-header=Content-Encoding:gzip" />
-        <arg value="--force" /> <!-- force overwrite -->
-      </args>
-      <filesetToUpload>
-        <fileset dir="${basedir}/__build-work-gzip" includes="**"/>
-      </filesetToUpload>
-    </upload>
+      <!-- see: http://www.ghidinelli.com/2009/09/02/deploying-assets-amazon-s3-ant -->
+    <exec executable="s3cmd" failonerror="true">
+      <arg value="--guess-mime-type" />
+      <arg value="--include=*" />
+      <arg value="--exclude=*.html" />
+      <arg value="--add-header=Content-Encoding:gzip" />
+      <arg value="--recursive" />
+      <arg value="--acl-public" />
+      <arg value="sync" />
+      <arg value="${basedir}/__build-work-gzip/" />
+      <arg value="s3://davidstanke.com/" />
+    </exec>
+  </target>
+
+  <target name="publish_html">
+    <exec executable="s3cmd" failonerror="true">
+      <arg value="--exclude=*" />
+      <arg value="--include=*.html" />
+      <arg value="--mime-type=text/html;charset=utf-8" />
+      <arg value="--add-header=Content-Encoding:gzip" />
+      <arg value="--recursive" />
+      <arg value="--acl-public" />
+      <arg value="sync" />
+      <arg value="${basedir}/__build-work-gzip/" />
+      <arg value="s3://davidstanke.com/" />
+    </exec>
+  </target>
+
+  <target name="publish_resume">
+    <exec executable="s3cmd" failonerror="true">
+      <arg value="--guess-mime-type" />
+      <arg value="--recursive" />
+      <arg value="--acl-public" />
+      <arg value="sync" />
+      <arg value="${basedir}/_html/resume/" />
+      <arg value="s3://davidstanke.com/resume/" />
+    </exec>
   </target>
 
   <target name="clean_working_dir">

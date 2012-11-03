@@ -1,0 +1,41 @@
+DAVID STANKE
+PRODUCT-ORIENTED CTO
+
+davidstanke@gmail.com
+1-917-902-0055
+davidstanke.com
+
+EXPERIENCE:
+Chief Technology Officer
+OvationTix
+2005 - Present
+OvationTix.com (a service of TheaterMania) is a richly featured box office event-ticketing platform processing over $100 million per year through massively concurrent ecommerce, real-time reporting, and barcoded access control. I lead a team of twelve engineers, product specialists, QA staff, and support technicians. Our attention to performance optimization has enabled us to achieve a sustained throughput of over 1,000 orders completed per second.
+ 
+Chief Technology Officer
+TheaterMania
+2002 - Present
+TheaterMania.com is the Web?s leading portal for theater news and information, with monthly traffic of over 1 million visitors, and a daily email volume of over half a million. My six-person team is responsible for all engineering, operations, and product design.
+
+Programming/Design Consultant
+2001 - 2002
+Web- and print- based consulting work for companies including Vivendi Universal, iN DEMAND pay-per-view and Atlantic Records.
+
+Director of Development
+Goldcap Design
+1998 - 2001
+Led the company?s expansion from a 2-person print design partnership to a developer of enterprise-level Web solutions with a staff of 15. Individually and as director of a team, produced information architecture, graphics, code, and database for large-scale B2B/B2C applications.
+
+EDUCATION:
+Columbia University
+MS, Technology Management 2012 (expected)
+
+Brown University
+BA, Social Psychology 1998
+
+SKILLS:
+Technology Leadership, Project Management, Architecture, Design
+MySQL, MS-SQL, Java, PHP, Python, AJAX, HTML5, CSS
+Infrastructure, Cloud, Linux, Mac, Windows
+
+AFFILIATIONS:
+New York CTO Club
