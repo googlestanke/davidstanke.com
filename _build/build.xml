@@ -13,16 +13,16 @@
 
   <target name="build-davessite"
       depends="
-      clean_working_dir
-      ,create_working_dir
+      create_working_dir
       ,copy_passthrough
-      ,run_htmlclean
       ,minify-js
       ,copy_js_already_minified
       ,run_minifycss
       ,copy_css_already_minified
       ,copy_favicon
       ,gzip_all
+      ,publish_to_s3
+      ,clean_working_dir
       "/>
 
 
@@ -116,7 +116,13 @@
 
    <target name="gzip_all">
     <mkdir dir="${basedir}/__build-work-gzip"/>
-     <foreach target="gzip_one" param="files">
+    <mkdir dir="${basedir}/__build-work-gzip/css"/>
+    <mkdir dir="${basedir}/__build-work-gzip/font"/>
+    <mkdir dir="${basedir}/__build-work-gzip/ico"/>
+    <mkdir dir="${basedir}/__build-work-gzip/img"/>
+    <mkdir dir="${basedir}/__build-work-gzip/js"/>
+
+     <foreach target="gzip_one" param="filename">
        <path>
         <fileset dir="${basedir}/__build-work" casesensitive="yes"/>
        </path>
@@ -124,7 +130,13 @@
    </target>
  
  <target name="gzip_one">
-    <gzip src="${files}" destfile="${files}"/> <!-- need to put this into the gzip folder!!! -->
+    <property name="sourcefile" value="${filename}"/>
+    <propertyregex property="targetfile"
+               input="${sourcefile}"
+               regexp="__build-work"
+               replace="__build-work-gzip"
+               global="true" />
+   <gzip src="${sourcefile}" destfile="${targetfile}"/>
   </target> 
 
 
@@ -136,28 +148,23 @@
         <arg value="--force" /> <!-- force overwrite -->
       </args>
       <filesetToUpload>
-        <fileset dir="${basedir}/__build-work" includes="**"/>
+        <fileset dir="${basedir}/__build-work-gzip" includes="**"/>
       </filesetToUpload>
     </upload>
   </target>
 
-  <target name="move_into_place">
-    <copy todir="${basedir}/" overwrite="true">
-        <fileset dir="${basedir}/__build-work" includes="**"/>
-    </copy>
-  </target>
-
   <target name="clean_working_dir">
       <delete dir="${basedir}/__build-work"/>
-    </target>
+      <delete dir="${basedir}/__build-work-gzip"/>
+  </target>
 
-    <!-- TODO: combine JS files, combine CSS files, gzip all text files, upload to S3 with correct headers (content-encoding: gzip) -->
+    <!-- TODO: combine JS files, combine CSS files -->
 
     <macrodef name="upload">
       <element name="args" optional="true"/>
       <element name="filesetToUpload"/>
       <sequential>
-        <apply executable="s3cmd" relative="true" dir="${basedir}/__build-work">
+        <apply executable="s3cmd" relative="true" dir="${basedir}/__build-work-gzip">
           <arg value="--acl-public" />
           <arg value="put" />
           <srcfile />
