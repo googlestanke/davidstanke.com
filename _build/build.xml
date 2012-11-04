@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE project>
 <!-- adapted from HTML5 Boilerplate build script -->
-<project name="Boilerplate Build" default="build" basedir="../"><!-- one back since we're in build/ -->
+<project name="Boilerplate Build" default="build" basedir="../"><!-- one back since we're in '_build'/ -->
 
   <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
   <!-- the .jar file is located in the tools directory -->
@@ -11,7 +11,7 @@
       </classpath>
   </taskdef>
 
-  <target name="build-davessite"
+  <target name="build"
       depends="
       create_working_dir
       ,copy_html
@@ -25,6 +25,7 @@
       ,publish_to_s3
       ,publish_html
       ,publish_resume
+      ,clean_working_dir
       "/>
 
 
@@ -311,7 +312,7 @@
             </else>
         </if>
     </target>
-    <target name="build">
+    <target name="build_built-in">
         <if>
             <equals arg1="${env}" arg2="dev"/>
             <then>
